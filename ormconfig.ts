@@ -10,7 +10,7 @@ const config: PostgresConnectionOptions = {
     username: connection.user,
     password: connection.password,
     database: connection.database as string,
-    entities: ["./src/models/*.ts"],
+    entities: ["./src/models/*{.ts,.js}"],
     synchronize: true,
     dropSchema: process.env.DB_DROP_SCHEMA === "true",
     extra: {
