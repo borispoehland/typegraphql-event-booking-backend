@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon -w src --ext ts --exec ts-node src/index.ts"
+    "dev": "NODE_ENV=development nodemon -w src --ext ts --exec ts-node src/index.ts"
   },
   "author": "Boris Pöhland",
   "license": "MIT",
