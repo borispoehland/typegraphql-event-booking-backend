@@ -4,7 +4,6 @@
   "description": "",
   "scripts": {
     "dev": "NODE_ENV=development nodemon -w src --ext ts --exec ts-node src/index.ts",
-    "build": "tsc",
     "start": "ts-node src/index.ts"
   },
   "author": "Boris Pöhland",
