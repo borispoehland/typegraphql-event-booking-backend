@@ -1,28 +1,40 @@
-import "reflect-metadata";
-import "./env";
+import 'reflect-metadata';
+import './env';
 
-import {createConnection} from "typeorm";
-import {ApolloServer} from "apollo-server-express";
-import express from "express";
-import {buildSchema} from "type-graphql";
-import {BookResolver} from "./resolvers/BookResolver";
-import {Context} from "./context";
+import { createConnection } from 'typeorm';
+import { ApolloServer } from 'apollo-server-express';
+import express from 'express';
+import { buildSchema } from 'type-graphql';
 
-const path: string = '/graphql';
+import { ExpressContext } from 'apollo-server-express/dist/ApolloServer';
+import { ApolloContext } from '../@types/custom';
+import { UserResolver } from './resolvers/UserResolver';
+import { EventResolver } from './resolvers/EventResolver';
+import { BookingResolver } from './resolvers/BookingResolver';
+
+import isAuth from './auth/auth-middleware';
+import customAuthChecker from './auth/auth-checker';
+
+const path = '/graphql';
 
 async function bootstrap() {
-    const app = express();
-    await createConnection();
-    const schema = await buildSchema({resolvers: [BookResolver]});
-    const server = new ApolloServer({
-        schema,
-        context: (): Context => {
-            return {isAuth: true};
-        },
-    });
-    server.applyMiddleware({app, path })
-    await app.listen(process.env.PORT || 3000);
-    console.log("Server has started!");
+  const app = express();
+  app.use(isAuth);
+  await createConnection();
+  const schema = await buildSchema({
+    resolvers: [UserResolver, EventResolver, BookingResolver],
+    authChecker: customAuthChecker,
+  });
+  const server = new ApolloServer({
+    schema,
+    context: (ctx: ExpressContext): ApolloContext => {
+      const { isAuth, userId } = ctx.req;
+      return { isAuth, userId };
+    },
+  });
+  server.applyMiddleware({ app, path });
+  await app.listen(process.env.PORT || 3000);
+  console.log('Server has started!');
 }
 
 bootstrap();
