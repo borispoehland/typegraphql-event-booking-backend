@@ -2,10 +2,12 @@ import { Resolver, Query, Arg, Mutation, Ctx } from 'type-graphql';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
 import { ApolloContext } from '../../@types/custom';
-import { AuthData, User } from '../models/User';
-import { LoginUserInput } from '../inputs/LoginUserInput';
-import { CreateUserInput } from '../inputs/CreateUserInput';
+import { User } from '../models/User';
+import { LoginUserInput } from '../types/LoginUserInput';
+import { CreateUserInput } from '../types/CreateUserInput';
+import { AuthData } from '../types/AuthData';
 
+/* eslint-disable @typescript-eslint/explicit-function-return-type, @typescript-eslint/explicit-module-boundary-types */
 @Resolver()
 export class UserResolver {
   @Query(() => [User])
@@ -42,3 +44,4 @@ export class UserResolver {
     return user;
   }
 }
+/* eslint-enable @typescript-eslint/explicit-function-return-type, @typescript-eslint/explicit-module-boundary-types */

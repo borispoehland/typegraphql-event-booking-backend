@@ -1,8 +1,8 @@
 import * as Express from 'express';
 import jwt from 'jsonwebtoken';
-import { AuthData } from '../models/User';
+import { AuthData } from '../types/AuthData';
 
-export default (req: Express.Request, res: Express.Response, next: Express.NextFunction) => {
+export default (req: Express.Request, res: Express.Response, next: Express.NextFunction): void => {
   const authHeader = req.headers.authorization;
   if (!authHeader) {
     req.isAuth = false;

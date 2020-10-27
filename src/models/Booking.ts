@@ -3,6 +3,7 @@ import { ObjectType, Field, ID } from 'type-graphql';
 import { Event } from './Event';
 import { User } from './User';
 
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 @Entity()
 @ObjectType()
 export class Booking extends BaseEntity {
@@ -11,11 +12,11 @@ export class Booking extends BaseEntity {
   id: string;
 
   @Field(() => User)
-  @ManyToOne(() => User, (user) => user.bookings, { onDelete: 'CASCADE' })
+  @ManyToOne(() => User, (user: User) => user.bookings, { onDelete: 'CASCADE' })
   user: User;
 
   @Field(() => Event)
-  @ManyToOne(() => Event, (event) => event.bookings, { onDelete: 'CASCADE' })
+  @ManyToOne(() => Event, (event: Event) => event.bookings, { onDelete: 'CASCADE' })
   event: Event;
 
   @CreateDateColumn({ type: 'timestamp' })
@@ -24,3 +25,4 @@ export class Booking extends BaseEntity {
   @UpdateDateColumn({ type: 'timestamp' })
   updatedAt: Date;
 }
+/* eslint-enable @typescript-eslint/explicit-function-return-type */

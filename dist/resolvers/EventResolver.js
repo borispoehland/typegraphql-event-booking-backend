@@ -51,8 +51,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.EventResolver = void 0;
 var type_graphql_1 = require("type-graphql");
 var Event_1 = require("../models/Event");
-var CreateEventInput_1 = require("../inputs/CreateEventInput");
+var CreateEventInput_1 = require("../types/CreateEventInput");
 var User_1 = require("../models/User");
+/* eslint-disable @typescript-eslint/explicit-function-return-type, @typescript-eslint/explicit-module-boundary-types */
 var EventResolver = /** @class */ (function () {
     function EventResolver() {
     }
@@ -101,3 +102,4 @@ var EventResolver = /** @class */ (function () {
     return EventResolver;
 }());
 exports.EventResolver = EventResolver;
+/* eslint-enable @typescript-eslint/explicit-function-return-type, @typescript-eslint/explicit-module-boundary-types */

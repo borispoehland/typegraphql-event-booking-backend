@@ -63,6 +63,7 @@ function bootstrap() {
                 case 1:
                     _a.sent();
                     return [4 /*yield*/, type_graphql_1.buildSchema({
+                            emitSchemaFile: 'schema.gql',
                             resolvers: [UserResolver_1.UserResolver, EventResolver_1.EventResolver, BookingResolver_1.BookingResolver],
                             authChecker: auth_checker_1.default,
                         })];

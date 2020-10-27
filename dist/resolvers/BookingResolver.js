@@ -53,6 +53,7 @@ var type_graphql_1 = require("type-graphql");
 var Event_1 = require("../models/Event");
 var User_1 = require("../models/User");
 var Booking_1 = require("../models/Booking");
+/* eslint-disable @typescript-eslint/explicit-function-return-type, @typescript-eslint/explicit-module-boundary-types */
 var BookingResolver = /** @class */ (function () {
     function BookingResolver() {
     }
@@ -124,7 +125,7 @@ var BookingResolver = /** @class */ (function () {
             });
         });
     };
-    BookingResolver.prototype.cancelBooking = function (bookingId, ctx) {
+    BookingResolver.prototype.cancelBooking = function (bookingId) {
         return __awaiter(this, void 0, void 0, function () {
             var booking, event;
             return __generator(this, function (_a) {
@@ -170,9 +171,9 @@ var BookingResolver = /** @class */ (function () {
     __decorate([
         type_graphql_1.Authorized(),
         type_graphql_1.Mutation(function () { return Event_1.Event; }),
-        __param(0, type_graphql_1.Arg('bookingId')), __param(1, type_graphql_1.Ctx()),
+        __param(0, type_graphql_1.Arg('bookingId')),
         __metadata("design:type", Function),
-        __metadata("design:paramtypes", [Number, Object]),
+        __metadata("design:paramtypes", [Number]),
         __metadata("design:returntype", Promise)
     ], BookingResolver.prototype, "cancelBooking", null);
     BookingResolver = __decorate([
@@ -181,3 +182,4 @@ var BookingResolver = /** @class */ (function () {
     return BookingResolver;
 }());
 exports.BookingResolver = BookingResolver;
+/* eslint-enable @typescript-eslint/explicit-function-return-type, @typescript-eslint/explicit-module-boundary-types */

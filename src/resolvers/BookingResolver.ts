@@ -4,6 +4,7 @@ import { Event } from '../models/Event';
 import { User } from '../models/User';
 import { Booking } from '../models/Booking';
 
+/* eslint-disable @typescript-eslint/explicit-function-return-type, @typescript-eslint/explicit-module-boundary-types */
 @Resolver()
 export class BookingResolver {
   @Authorized()
@@ -13,7 +14,7 @@ export class BookingResolver {
     if (!event) throw new Error('Event does not exist!');
 
     const bookings = await Booking.find({ where: { event }, relations: ['user'] });
-    return bookings.map((booking) => booking.user);
+    return bookings.map((booking: Booking) => booking.user);
   }
 
   @Authorized()
@@ -24,7 +25,7 @@ export class BookingResolver {
     if (!user) throw new Error('User does not exist!');
 
     const bookings = await Booking.find({ where: { user }, relations: ['event'] });
-    return bookings.map((booking) => booking.event);
+    return bookings.map((booking: Booking) => booking.event);
   }
 
   @Authorized()
@@ -37,7 +38,7 @@ export class BookingResolver {
     const user = await User.findOne({ where: { id: userId }, relations: ['bookings', 'bookings.event'] });
     if (!user) throw new Error('User does not exist!');
 
-    if (user.bookings.filter((booking) => booking.event.id === eventId).length) {
+    if (user.bookings.filter((booking: Booking) => booking.event.id === eventId).length) {
       throw new Error('You already booked this event!');
     }
 
@@ -50,14 +51,15 @@ export class BookingResolver {
 
   @Authorized()
   @Mutation(() => Event)
-  async cancelBooking(@Arg('bookingId') bookingId: number, @Ctx() ctx: ApolloContext) {
+  async cancelBooking(@Arg('bookingId') bookingId: number) {
     const booking = await Booking.findOne({ where: { id: bookingId }, relations: ['event'] });
     if (!booking) throw new Error('The booking does not exist!');
 
-    const event = booking.event;
+    const { event } = booking;
 
     await Booking.remove(booking);
 
     return event;
   }
 }
+/* eslint-enable @typescript-eslint/explicit-function-return-type, @typescript-eslint/explicit-module-boundary-types */

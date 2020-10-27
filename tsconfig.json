@@ -1,16 +1,8 @@
 {
+  "extends": "./tsconfig-lint.json",
   "compilerOptions": {
     "rootDir": "src",
-    "outDir": "dist",
-    "target": "es5",
-    "module": "commonjs",
-    "strict": true,
-    "esModuleInterop": true,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "noImplicitAny": true,
-    "strictPropertyInitialization": false,
-    "typeRoots": ["@types","node_modules/@types"]
+    "outDir": "dist"
   },
   "exclude": ["ormconfig.ts"]
 }

@@ -1,8 +1,9 @@
-import { Entity, BaseEntity, PrimaryGeneratedColumn, Column, ManyToOne, ManyToMany, OneToMany } from 'typeorm';
+import { Entity, BaseEntity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany } from 'typeorm';
 import { ObjectType, Field, ID, Float } from 'type-graphql';
 import { User } from './User';
 import { Booking } from './Booking';
 
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 @Entity()
 @ObjectType()
 export class Event extends BaseEntity {
@@ -27,10 +28,11 @@ export class Event extends BaseEntity {
   date: Date;
 
   @Field(() => User)
-  @ManyToOne(() => User, (user) => user.createdEvents, { onDelete: 'CASCADE' })
+  @ManyToOne(() => User, (user: User) => user.createdEvents, { onDelete: 'CASCADE' })
   creator: User;
 
   @Field(() => [Booking])
-  @OneToMany(() => Booking, (booking) => booking.event)
+  @OneToMany(() => Booking, (booking: Booking) => booking.event)
   bookings: Booking[];
 }
+/* eslint-enable @typescript-eslint/explicit-function-return-type */

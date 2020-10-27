@@ -1,8 +1,9 @@
-import { Entity, BaseEntity, PrimaryGeneratedColumn, Column, OneToMany, ManyToMany, JoinTable } from 'typeorm';
-import { ObjectType, Field, ID, Int } from 'type-graphql';
+import { Entity, BaseEntity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+import { ObjectType, Field, ID } from 'type-graphql';
 import { Event } from './Event';
 import { Booking } from './Booking';
 
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 @Entity()
 @ObjectType()
 export class User extends BaseEntity {
@@ -18,22 +19,11 @@ export class User extends BaseEntity {
   password: string;
 
   @Field(() => [Event])
-  @OneToMany(() => Event, (event) => event.creator)
+  @OneToMany(() => Event, (event: Event) => event.creator)
   createdEvents: Event[];
 
   @Field(() => [Booking])
-  @OneToMany(() => Booking, (booking) => booking.user)
+  @OneToMany(() => Booking, (booking: Booking) => booking.user)
   bookings: Booking[];
 }
-
-@ObjectType()
-export class AuthData {
-  @Field(() => ID)
-  userId: number;
-
-  @Field()
-  token: string;
-
-  @Field(() => Int)
-  tokenExpiration: number;
-}
+/* eslint-enable @typescript-eslint/explicit-function-return-type */

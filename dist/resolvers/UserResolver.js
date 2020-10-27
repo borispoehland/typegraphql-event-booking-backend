@@ -56,8 +56,10 @@ var type_graphql_1 = require("type-graphql");
 var jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 var bcryptjs_1 = __importDefault(require("bcryptjs"));
 var User_1 = require("../models/User");
-var LoginUserInput_1 = require("../inputs/LoginUserInput");
-var CreateUserInput_1 = require("../inputs/CreateUserInput");
+var LoginUserInput_1 = require("../types/LoginUserInput");
+var CreateUserInput_1 = require("../types/CreateUserInput");
+var AuthData_1 = require("../types/AuthData");
+/* eslint-disable @typescript-eslint/explicit-function-return-type, @typescript-eslint/explicit-module-boundary-types */
 var UserResolver = /** @class */ (function () {
     function UserResolver() {
     }
@@ -123,7 +125,7 @@ var UserResolver = /** @class */ (function () {
         __metadata("design:returntype", void 0)
     ], UserResolver.prototype, "user", null);
     __decorate([
-        type_graphql_1.Query(function () { return User_1.AuthData; }),
+        type_graphql_1.Query(function () { return AuthData_1.AuthData; }),
         __param(0, type_graphql_1.Arg('data')),
         __metadata("design:type", Function),
         __metadata("design:paramtypes", [LoginUserInput_1.LoginUserInput]),
@@ -142,3 +144,4 @@ var UserResolver = /** @class */ (function () {
     return UserResolver;
 }());
 exports.UserResolver = UserResolver;
+/* eslint-enable @typescript-eslint/explicit-function-return-type, @typescript-eslint/explicit-module-boundary-types */

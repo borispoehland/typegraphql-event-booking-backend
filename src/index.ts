@@ -12,16 +12,17 @@ import { UserResolver } from './resolvers/UserResolver';
 import { EventResolver } from './resolvers/EventResolver';
 import { BookingResolver } from './resolvers/BookingResolver';
 
-import isAuth from './auth/auth-middleware';
+import isAuthMiddleware from './auth/auth-middleware';
 import customAuthChecker from './auth/auth-checker';
 
 const path = '/graphql';
 
-async function bootstrap() {
+async function bootstrap(): Promise<void> {
   const app = express();
-  app.use(isAuth);
+  app.use(isAuthMiddleware);
   await createConnection();
   const schema = await buildSchema({
+    emitSchemaFile: 'schema.gql',
     resolvers: [UserResolver, EventResolver, BookingResolver],
     authChecker: customAuthChecker,
   });

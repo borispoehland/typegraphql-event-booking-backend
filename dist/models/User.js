@@ -22,11 +22,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AuthData = exports.User = void 0;
+exports.User = void 0;
 var typeorm_1 = require("typeorm");
 var type_graphql_1 = require("type-graphql");
 var Event_1 = require("./Event");
 var Booking_1 = require("./Booking");
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 var User = /** @class */ (function (_super) {
     __extends(User, _super);
     function User() {
@@ -63,24 +64,4 @@ var User = /** @class */ (function (_super) {
     return User;
 }(typeorm_1.BaseEntity));
 exports.User = User;
-var AuthData = /** @class */ (function () {
-    function AuthData() {
-    }
-    __decorate([
-        type_graphql_1.Field(function () { return type_graphql_1.ID; }),
-        __metadata("design:type", Number)
-    ], AuthData.prototype, "userId", void 0);
-    __decorate([
-        type_graphql_1.Field(),
-        __metadata("design:type", String)
-    ], AuthData.prototype, "token", void 0);
-    __decorate([
-        type_graphql_1.Field(function () { return type_graphql_1.Int; }),
-        __metadata("design:type", Number)
-    ], AuthData.prototype, "tokenExpiration", void 0);
-    AuthData = __decorate([
-        type_graphql_1.ObjectType()
-    ], AuthData);
-    return AuthData;
-}());
-exports.AuthData = AuthData;
+/* eslint-enable @typescript-eslint/explicit-function-return-type */

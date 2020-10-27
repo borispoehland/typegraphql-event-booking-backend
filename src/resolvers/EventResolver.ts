@@ -1,9 +1,10 @@
 import { Arg, Authorized, Ctx, Mutation, Query, Resolver } from 'type-graphql';
 import { ApolloContext } from '../../@types/custom';
 import { Event } from '../models/Event';
-import { CreateEventInput } from '../inputs/CreateEventInput';
+import { CreateEventInput } from '../types/CreateEventInput';
 import { User } from '../models/User';
 
+/* eslint-disable @typescript-eslint/explicit-function-return-type, @typescript-eslint/explicit-module-boundary-types */
 @Resolver()
 export class EventResolver {
   @Query(() => [Event])
@@ -26,3 +27,4 @@ export class EventResolver {
     return event;
   }
 }
+/* eslint-enable @typescript-eslint/explicit-function-return-type, @typescript-eslint/explicit-module-boundary-types */

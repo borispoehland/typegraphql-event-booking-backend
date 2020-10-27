@@ -27,6 +27,7 @@ var typeorm_1 = require("typeorm");
 var type_graphql_1 = require("type-graphql");
 var Event_1 = require("./Event");
 var User_1 = require("./User");
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 var Booking = /** @class */ (function (_super) {
     __extends(Booking, _super);
     function Booking() {
@@ -62,3 +63,4 @@ var Booking = /** @class */ (function (_super) {
     return Booking;
 }(typeorm_1.BaseEntity));
 exports.Booking = Booking;
+/* eslint-enable @typescript-eslint/explicit-function-return-type */

@@ -1,10 +1,13 @@
 module.exports = {
   extends: '@bpoehland/eslint-config',
+  parserOptions: {
+    project: './tsconfig-lint.json',
+  },
   rules: {
     '@typescript-eslint/typedef': [
       'error',
       {
-        arrayDestructuring: false,
+        arrayDestructuring: true,
         arrowParameter: true,
         memberVariableDeclaration: true,
         objectDestructuring: false,
@@ -14,5 +17,8 @@ module.exports = {
         variableDeclarationIgnoreFunction: false,
       },
     ],
+    'import/no-cycle': 'off',
+    'import/prefer-default-export': 'off',
+    'class-methods-use-this': 'off',
   },
 };
