@@ -15,6 +15,7 @@ const config: PostgresConnectionOptions = {
   dropSchema: process.env.DB_DROP_SCHEMA === 'true',
   extra: {
     ssl: process.env.DB_SSL === 'true',
+    connectionLimit: 5,
   },
 };
 

@@ -12,7 +12,8 @@ var config = {
     synchronize: true,
     dropSchema: process.env.DB_DROP_SCHEMA === 'true',
     extra: {
-        ssl: process.env.DB_SSL === 'true'
+        ssl: process.env.DB_SSL === 'true',
+        connectionLimit: 5
     }
 };
 module.exports = config;

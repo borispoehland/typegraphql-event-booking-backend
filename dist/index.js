@@ -79,7 +79,6 @@ function bootstrap() {
                     return [4 /*yield*/, app.listen(process.env.PORT || 3000)];
                 case 3:
                     _a.sent();
-                    console.log('Server has started!');
                     return [2 /*return*/];
             }
         });
