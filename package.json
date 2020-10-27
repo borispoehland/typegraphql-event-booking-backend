@@ -32,7 +32,14 @@
   "devDependencies": {
     "@bpoehland/eslint-config": "^1.0.0",
     "@bpoehland/prettier-config": "^1.0.0",
+    "husky": "^4.3.0",
     "jest": "^26.5.3",
     "nodemon": "^2.0.4"
+  },
+
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run build"
+    }
   }
 }
