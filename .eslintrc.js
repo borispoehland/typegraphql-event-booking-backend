@@ -4,7 +4,7 @@ module.exports = {
     '@typescript-eslint/typedef': [
       'error',
       {
-        arrayDestructuring: true,
+        arrayDestructuring: false,
         arrowParameter: true,
         memberVariableDeclaration: true,
         objectDestructuring: false,
