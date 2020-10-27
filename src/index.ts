@@ -22,7 +22,6 @@ async function bootstrap(): Promise<void> {
   app.use(isAuthMiddleware);
   await createConnection();
   const schema = await buildSchema({
-    emitSchemaFile: 'schema.gql',
     resolvers: [UserResolver, EventResolver, BookingResolver],
     authChecker: customAuthChecker,
   });
