@@ -63,6 +63,7 @@ function bootstrap() {
                 case 1:
                     _a.sent();
                     return [4 /*yield*/, type_graphql_1.buildSchema({
+                            emitSchemaFile: true,
                             resolvers: [UserResolver_1.UserResolver, EventResolver_1.EventResolver, BookingResolver_1.BookingResolver],
                             authChecker: auth_checker_1.default,
                         })];
@@ -76,7 +77,7 @@ function bootstrap() {
                         },
                     });
                     server.applyMiddleware({ app: app, path: path });
-                    return [4 /*yield*/, app.listen(process.env.PORT || 3000)];
+                    return [4 /*yield*/, app.listen(process.env.PORT || 5000)];
                 case 3:
                     _a.sent();
                     return [2 /*return*/];

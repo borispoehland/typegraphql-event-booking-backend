@@ -1,4 +1,4 @@
-import { Arg, Authorized, Ctx, Mutation, Query, Resolver } from 'type-graphql';
+import { Arg, Authorized, Ctx, Mutation, Query, Resolver, ID } from 'type-graphql';
 import { ApolloContext } from '../../@types/custom';
 import { Event } from '../models/Event';
 import { User } from '../models/User';
@@ -9,7 +9,7 @@ import { Booking } from '../models/Booking';
 export class BookingResolver {
   @Authorized()
   @Query(() => [User])
-  async bookersOf(@Arg('eventId') eventId: number) {
+  async bookersOf(@Arg('eventId', () => ID) eventId: string) {
     const event = await Event.findOne({ where: { id: eventId }, relations: ['bookings'] });
     if (!event) throw new Error('Event does not exist!');
 
@@ -19,7 +19,7 @@ export class BookingResolver {
 
   @Authorized()
   @Query(() => [Event])
-  async bookingsOf(@Ctx() ctx: ApolloContext, @Arg('userId', { nullable: true }) userId?: number) {
+  async bookingsOf(@Ctx() ctx: ApolloContext, @Arg('userId', () => ID, { nullable: true }) userId?: string) {
     const id = userId || ctx.userId;
     const user = await User.findOne({ where: { id }, relations: ['bookings'] });
     if (!user) throw new Error('User does not exist!');
@@ -30,7 +30,7 @@ export class BookingResolver {
 
   @Authorized()
   @Mutation(() => Booking)
-  async createBooking(@Arg('eventId') eventId: number, @Ctx() ctx: ApolloContext) {
+  async createBooking(@Arg('eventId', () => ID) eventId: string, @Ctx() ctx: ApolloContext) {
     const event = await Event.findOne({ where: { id: eventId } });
     if (!event) throw new Error('Event does not exist!');
 
@@ -51,7 +51,7 @@ export class BookingResolver {
 
   @Authorized()
   @Mutation(() => Event)
-  async cancelBooking(@Arg('bookingId') bookingId: number) {
+  async cancelBooking(@Arg('bookingId', () => ID) bookingId: string) {
     const booking = await Booking.findOne({ where: { id: bookingId }, relations: ['event'] });
     if (!booking) throw new Error('The booking does not exist!');
 
@@ -62,4 +62,5 @@ export class BookingResolver {
     return event;
   }
 }
+
 /* eslint-enable @typescript-eslint/explicit-function-return-type, @typescript-eslint/explicit-module-boundary-types */

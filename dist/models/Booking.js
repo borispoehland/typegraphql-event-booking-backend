@@ -49,10 +49,12 @@ var Booking = /** @class */ (function (_super) {
         __metadata("design:type", Event_1.Event)
     ], Booking.prototype, "event", void 0);
     __decorate([
+        type_graphql_1.Field(),
         typeorm_1.CreateDateColumn({ type: 'timestamp' }),
         __metadata("design:type", Date)
     ], Booking.prototype, "createdAt", void 0);
     __decorate([
+        type_graphql_1.Field(),
         typeorm_1.UpdateDateColumn({ type: 'timestamp' }),
         __metadata("design:type", Date)
     ], Booking.prototype, "updatedAt", void 0);

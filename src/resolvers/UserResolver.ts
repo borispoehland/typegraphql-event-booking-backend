@@ -1,4 +1,4 @@
-import { Resolver, Query, Arg, Mutation, Ctx } from 'type-graphql';
+import { Resolver, Query, Arg, Mutation, Ctx, ID } from 'type-graphql';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
 import { ApolloContext } from '../../@types/custom';
@@ -16,7 +16,7 @@ export class UserResolver {
   }
 
   @Query(() => User)
-  user(@Ctx() ctx: ApolloContext, @Arg('userId', { nullable: true }) userId?: number) {
+  user(@Ctx() ctx: ApolloContext, @Arg('userId', () => ID, { nullable: true }) userId?: string) {
     const id = userId || ctx.userId;
     return User.findOne({ where: { id }, relations: ['createdEvents'] });
   }

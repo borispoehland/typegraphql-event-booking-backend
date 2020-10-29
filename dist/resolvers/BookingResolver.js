@@ -147,33 +147,33 @@ var BookingResolver = /** @class */ (function () {
     __decorate([
         type_graphql_1.Authorized(),
         type_graphql_1.Query(function () { return [User_1.User]; }),
-        __param(0, type_graphql_1.Arg('eventId')),
+        __param(0, type_graphql_1.Arg('eventId', function () { return type_graphql_1.ID; })),
         __metadata("design:type", Function),
-        __metadata("design:paramtypes", [Number]),
+        __metadata("design:paramtypes", [String]),
         __metadata("design:returntype", Promise)
     ], BookingResolver.prototype, "bookersOf", null);
     __decorate([
         type_graphql_1.Authorized(),
         type_graphql_1.Query(function () { return [Event_1.Event]; }),
-        __param(0, type_graphql_1.Ctx()), __param(1, type_graphql_1.Arg('userId', { nullable: true })),
+        __param(0, type_graphql_1.Ctx()), __param(1, type_graphql_1.Arg('userId', function () { return type_graphql_1.ID; }, { nullable: true })),
         __metadata("design:type", Function),
-        __metadata("design:paramtypes", [Object, Number]),
+        __metadata("design:paramtypes", [Object, String]),
         __metadata("design:returntype", Promise)
     ], BookingResolver.prototype, "bookingsOf", null);
     __decorate([
         type_graphql_1.Authorized(),
         type_graphql_1.Mutation(function () { return Booking_1.Booking; }),
-        __param(0, type_graphql_1.Arg('eventId')), __param(1, type_graphql_1.Ctx()),
+        __param(0, type_graphql_1.Arg('eventId', function () { return type_graphql_1.ID; })), __param(1, type_graphql_1.Ctx()),
         __metadata("design:type", Function),
-        __metadata("design:paramtypes", [Number, Object]),
+        __metadata("design:paramtypes", [String, Object]),
         __metadata("design:returntype", Promise)
     ], BookingResolver.prototype, "createBooking", null);
     __decorate([
         type_graphql_1.Authorized(),
         type_graphql_1.Mutation(function () { return Event_1.Event; }),
-        __param(0, type_graphql_1.Arg('bookingId')),
+        __param(0, type_graphql_1.Arg('bookingId', function () { return type_graphql_1.ID; })),
         __metadata("design:type", Function),
-        __metadata("design:paramtypes", [Number]),
+        __metadata("design:paramtypes", [String]),
         __metadata("design:returntype", Promise)
     ], BookingResolver.prototype, "cancelBooking", null);
     BookingResolver = __decorate([

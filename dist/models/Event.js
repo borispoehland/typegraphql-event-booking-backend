@@ -36,7 +36,7 @@ var Event = /** @class */ (function (_super) {
     __decorate([
         type_graphql_1.Field(function () { return type_graphql_1.ID; }),
         typeorm_1.PrimaryGeneratedColumn(),
-        __metadata("design:type", Number)
+        __metadata("design:type", String)
     ], Event.prototype, "id", void 0);
     __decorate([
         type_graphql_1.Field(),

@@ -22,6 +22,7 @@ async function bootstrap(): Promise<void> {
   app.use(isAuthMiddleware);
   await createConnection();
   const schema = await buildSchema({
+    emitSchemaFile: true,
     resolvers: [UserResolver, EventResolver, BookingResolver],
     authChecker: customAuthChecker,
   });
@@ -33,7 +34,7 @@ async function bootstrap(): Promise<void> {
     },
   });
   server.applyMiddleware({ app, path });
-  await app.listen(process.env.PORT || 3000);
+  await app.listen(process.env.PORT || 5000);
 }
 
 bootstrap();

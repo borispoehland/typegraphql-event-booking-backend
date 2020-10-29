@@ -1,6 +1,6 @@
 declare namespace Express {
   export interface Request {
-    userId: number;
+    userId: string;
     isAuth: boolean;
   }
 }

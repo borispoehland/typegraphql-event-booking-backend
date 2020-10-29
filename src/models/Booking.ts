@@ -19,9 +19,11 @@ export class Booking extends BaseEntity {
   @ManyToOne(() => Event, (event: Event) => event.bookings, { onDelete: 'CASCADE' })
   event: Event;
 
+  @Field()
   @CreateDateColumn({ type: 'timestamp' })
   createdAt: Date;
 
+  @Field()
   @UpdateDateColumn({ type: 'timestamp' })
   updatedAt: Date;
 }

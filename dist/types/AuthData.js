@@ -17,7 +17,7 @@ var AuthData = /** @class */ (function () {
     }
     __decorate([
         type_graphql_1.Field(function () { return type_graphql_1.ID; }),
-        __metadata("design:type", Number)
+        __metadata("design:type", String)
     ], AuthData.prototype, "userId", void 0);
     __decorate([
         type_graphql_1.Field(),

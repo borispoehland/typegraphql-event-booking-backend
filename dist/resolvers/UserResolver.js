@@ -119,9 +119,9 @@ var UserResolver = /** @class */ (function () {
     ], UserResolver.prototype, "users", null);
     __decorate([
         type_graphql_1.Query(function () { return User_1.User; }),
-        __param(0, type_graphql_1.Ctx()), __param(1, type_graphql_1.Arg('userId', { nullable: true })),
+        __param(0, type_graphql_1.Ctx()), __param(1, type_graphql_1.Arg('userId', function () { return type_graphql_1.ID; }, { nullable: true })),
         __metadata("design:type", Function),
-        __metadata("design:paramtypes", [Object, Number]),
+        __metadata("design:paramtypes", [Object, String]),
         __metadata("design:returntype", void 0)
     ], UserResolver.prototype, "user", null);
     __decorate([

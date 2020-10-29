@@ -9,7 +9,7 @@ import { Booking } from './Booking';
 export class Event extends BaseEntity {
   @Field(() => ID)
   @PrimaryGeneratedColumn()
-  id: number;
+  id: string;
 
   @Field()
   @Column({ unique: true })

@@ -4,7 +4,7 @@ import { Field, ID, Int, ObjectType } from 'type-graphql';
 @ObjectType()
 export class AuthData {
   @Field(() => ID)
-  userId: number;
+  userId: string;
 
   @Field()
   token: string;
