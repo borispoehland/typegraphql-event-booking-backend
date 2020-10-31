@@ -77,7 +77,7 @@ var BookingResolver = /** @class */ (function () {
     };
     BookingResolver.prototype.bookingsOf = function (ctx, userId) {
         return __awaiter(this, void 0, void 0, function () {
-            var id, user, bookings;
+            var id, user;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -87,10 +87,7 @@ var BookingResolver = /** @class */ (function () {
                         user = _a.sent();
                         if (!user)
                             throw new Error('User does not exist!');
-                        return [4 /*yield*/, Booking_1.Booking.find({ where: { user: user }, relations: ['event'] })];
-                    case 2:
-                        bookings = _a.sent();
-                        return [2 /*return*/, bookings.map(function (booking) { return booking.event; })];
+                        return [2 /*return*/, Booking_1.Booking.find({ where: { user: user }, relations: ['event'] })];
                 }
             });
         });
@@ -154,7 +151,7 @@ var BookingResolver = /** @class */ (function () {
     ], BookingResolver.prototype, "bookersOf", null);
     __decorate([
         type_graphql_1.Authorized(),
-        type_graphql_1.Query(function () { return [Event_1.Event]; }),
+        type_graphql_1.Query(function () { return [Booking_1.Booking]; }),
         __param(0, type_graphql_1.Ctx()), __param(1, type_graphql_1.Arg('userId', function () { return type_graphql_1.ID; }, { nullable: true })),
         __metadata("design:type", Function),
         __metadata("design:paramtypes", [Object, String]),

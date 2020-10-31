@@ -22,6 +22,7 @@ async function bootstrap(): Promise<void> {
   app.use(isAuthMiddleware);
   await createConnection();
   const schema = await buildSchema({
+    emitSchemaFile: process.env.NODE_ENV === 'development',
     resolvers: [UserResolver, EventResolver, BookingResolver],
     authChecker: customAuthChecker,
   });

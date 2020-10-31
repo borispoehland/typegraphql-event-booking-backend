@@ -1,4 +1,4 @@
-import { Arg, Authorized, Ctx, Mutation, Query, Resolver, ID } from 'type-graphql';
+import { Arg, Authorized, Ctx, ID, Mutation, Query, Resolver } from 'type-graphql';
 import { ApolloContext } from '../../@types/custom';
 import { Event } from '../models/Event';
 import { User } from '../models/User';
@@ -18,14 +18,13 @@ export class BookingResolver {
   }
 
   @Authorized()
-  @Query(() => [Event])
+  @Query(() => [Booking])
   async bookingsOf(@Ctx() ctx: ApolloContext, @Arg('userId', () => ID, { nullable: true }) userId?: string) {
     const id = userId || ctx.userId;
     const user = await User.findOne({ where: { id }, relations: ['bookings'] });
     if (!user) throw new Error('User does not exist!');
 
-    const bookings = await Booking.find({ where: { user }, relations: ['event'] });
-    return bookings.map((booking: Booking) => booking.event);
+    return Booking.find({ where: { user }, relations: ['event'] });
   }
 
   @Authorized()
